@@ -7,3 +7,6 @@
 [submodule "Cactus/vendor/imgui"]
 	path = Cactus/vendor/imgui
 	url = https://github.com/TheCherno/imgui
+[submodule "Cactus/vendor/glm"]
+	path = Cactus/vendor/glm
+	url = https://github.com/g-truc/glm

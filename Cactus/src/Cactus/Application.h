@@ -7,6 +7,8 @@
 #include "Cactus/Events/Event.h"
 #include "Cactus/Events/ApplicationEvent.h"
 
+#include "Cactus/ImGui/ImGuiLayer.h"
+
 namespace Cactus {
 	class CACTUS_API Application
 	{
@@ -24,7 +26,9 @@ namespace Cactus {
 		inline Window& GetWindow() { return *window; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
+		
 		std::unique_ptr<Window> window;
+		ImGuiLayer* imGuiLayer;
 
 		bool running = false;
 		LayerStack layerStack;

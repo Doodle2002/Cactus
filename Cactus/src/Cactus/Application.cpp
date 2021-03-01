@@ -2,7 +2,9 @@
 
 #include "Cactus/Application.h"
 #include "Cactus/Log.h"
+#include "Cactus/Input.h"
 
+#include "glm/glm.hpp"
 namespace Cactus {
 
 	#define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
@@ -16,6 +18,9 @@ namespace Cactus {
 		instance = this;
 		window = std::unique_ptr<Window>(Window::Create());
 		window->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
+
+		imGuiLayer = new ImGuiLayer();
+		PushOverlay(imGuiLayer);
 	}
 	Application::~Application()
 	{
@@ -68,6 +73,12 @@ namespace Cactus {
 				layer->OnUpdate();
 			}
 
+			imGuiLayer->Begin();
+			for (Layer* layer : layerStack)
+			{
+				layer->OnImGuiRender();
+			}
+			imGuiLayer->End();
 			window->OnUpdate();
 		}
 

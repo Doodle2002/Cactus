@@ -5,7 +5,6 @@ namespace Cactus
 {
 	LayerStack::LayerStack()
 	{
-		layerInsert = layers.begin();
 	}
 
 	LayerStack::~LayerStack()
@@ -18,7 +17,8 @@ namespace Cactus
 
 	void LayerStack::PushLayer(Layer* layer)
 	{
-		layerInsert = layers.emplace(layerInsert, layer);
+		layers.emplace(layers.begin() + layerInsertIndex , layer);
+		layerInsertIndex++;
 		layer->OnAttach();
 	}
 	
@@ -34,7 +34,7 @@ namespace Cactus
 		if (it != layers.end())
 		{
 			layers.erase(it);
-			layerInsert--;
+			layerInsertIndex--;
 		}
 	}
 

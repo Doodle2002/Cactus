@@ -1,5 +1,7 @@
 #include <Cactus.h>
 
+#include "imgui/imgui.h"
+
 class ExampleLayer : public Cactus::Layer
 {
 public:
@@ -10,14 +12,13 @@ public:
 
 	void OnUpdate() override
 	{
-		if (Cactus::Input::KeyDown(65))
-		{
-			CACTUS_INFO("Moving left!");
-		}
-		else
-		{
-			CACTUS_INFO("Standing still!");
-		}
+	}
+
+	void OnImGuiRender()
+	{
+		ImGui::Begin("Test");
+		ImGui::Text("Hello world!");
+		ImGui::End();
 	}
 
 	void OnEvent(Cactus::Event& event) override
@@ -33,8 +34,7 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Cactus::ImGuiLayer());
-		PushOverlay(new Cactus::InputLayer());
+		//PushOverlay(new Cactus::InputLayer());
 	}
 
 	~Sandbox()

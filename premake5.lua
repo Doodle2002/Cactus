@@ -13,7 +13,8 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "Cactus/vendor/GLFW/include"
 IncludeDir["Glad"] = "Cactus/vendor/Glad/include"
-IncludeDir["ImGui"] = "Cactus/vendor/imgui"
+IncludeDir["imgui"] = "Cactus/vendor/imgui"
+IncludeDir["glm"] = "Cactus/vendor/glm"
 
 include "Cactus/vendor/GLFW"
 include "Cactus/vendor/Glad"
@@ -21,8 +22,9 @@ include "Cactus/vendor/imgui"
 
 project "Cactus"
 	location "Cactus"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -42,7 +44,8 @@ project "Cactus"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.imgui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -91,6 +94,7 @@ project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -104,7 +108,9 @@ project "Sandbox"
 	includedirs
 	{
 		"Cactus/vendor/spdlog/include",
-		"Cactus/src"
+		"Cactus/src",
+		"%{IncludeDir.glm}",
+		"Cactus/vendor"
 	}
 
 	links 
