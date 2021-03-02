@@ -12,6 +12,24 @@ public:
 
 	void OnUpdate() override
 	{
+		/*
+		int key = CACTUS_KEY_F;
+		bool pressed = Cactus::Input::KeyPressed(key);
+		if (Cactus::Input::KeyDown(key) && !pressed)
+		{
+			CACTUS_INFO("F Down");
+		}
+
+		if (pressed)
+		{
+			CACTUS_INFO("F Pressed");
+		}
+
+		if(Cactus::Input::KeyReleased(key))
+		{
+			CACTUS_INFO("F Released");
+		}
+		*/
 	}
 
 	void OnImGuiRender()

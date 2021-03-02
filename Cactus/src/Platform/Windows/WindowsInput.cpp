@@ -1,13 +1,14 @@
 #include "cactus_pch.h"
 #include "WindowsInput.h"
 
+#include "Cactus/KeyCodes.h"
 #include "Cactus/Application.h"
 #include <GLFW/glfw3.h>
 namespace Cactus
 {
 	Input* Input::instance = new WindowsInput();
 
-	
+	/*
 	bool WindowsInput::KeyPressedImpl(int keycode)
 	{
 		auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
@@ -22,7 +23,7 @@ namespace Cactus
 		auto state = glfwGetMouseButton(window, button);
 
 		return state = GLFW_PRESS;
-	}
+	}*/
 
 	std::pair<float, float> WindowsInput::GetMousePositionImpl()
 	{
@@ -48,4 +49,36 @@ namespace Cactus
 	}
 
 	
+	void WindowsInput::UpdateImpl()
+	{
+		auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
+
+		//Basically move 1st bit to 2nd bit, and set 1st bit if input is down
+		for (auto& it : keyMap) {
+			int keycode = it.first;
+			char value = it.second;
+
+			auto state = glfwGetKey(window, keycode);
+			int down = state == GLFW_PRESS || state == GLFW_REPEAT;
+
+			int curr = (value >> 0) & 1;
+			value = (curr << 1) + down;
+
+			keyMap[keycode] = value;
+		}
+
+		for (auto& it : mouseMap) {
+			int button = it.first;
+			char value = it.second;
+
+			auto state = glfwGetMouseButton(window, button);
+			int down = state == GLFW_PRESS;
+
+			int curr = (value >> 0) & 1;
+			value = (curr << 1) + down;
+
+			mouseMap[button] = value;
+		}
+
+	}
 }

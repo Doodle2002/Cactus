@@ -1,13 +1,17 @@
 #pragma once
 
 #ifdef CACTUS_PLATFORM_WINDOWS
-#ifdef CACTUS_BUILD_DLL
-#define CACTUS_API __declspec(dllexport)
+#if CACTUS_DYNAMIC_LINK
+	#ifdef CACTUS_BUILD_DLL
+		#define CACTUS_API __declspec(dllexport)
+	#else
+		#define CACTUS_API __declspec(dllimport)
+	#endif
 #else
-#define CACTUS_API __declspec(dllimport)
+#define CACTUS_API
 #endif
 #else
-#error Cactus only supports Windows!
+	#error Cactus only supports Windows!
 #endif
 
 #ifdef CACTUS_DEBUG
@@ -21,6 +25,7 @@
 	#define CACTUS_ASSERT(x, ...)
 	#define CACTUS_CORE_ASSERT(x, ...)
 #endif
+
 #define BIT(x) (1 << x)
 
 #define CACTUS_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)

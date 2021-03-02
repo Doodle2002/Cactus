@@ -4,7 +4,8 @@
 #include "Cactus/Events/MouseEvent.h"
 #include "Cactus/Events/KeyEvent.h"
 #include "Cactus/Events/ApplicationEvent.h"
-#include <glad/glad.h>
+
+#include "Platform/OpenGL/OpenGLContext.h"
 
 namespace Cactus 
 {
@@ -34,6 +35,8 @@ namespace Cactus
 		data.width = props.width;
 		data.height = props.height;
 
+		
+
 		CACTUS_CORE_INFO("Creating window: {0} ({1}, {2})", props.title, props.width, props.height);
 
 		if (!s_GLFWInitialized)
@@ -46,11 +49,11 @@ namespace Cactus
 		}
 
 		window = glfwCreateWindow((int)props.width, (int)props.height, data.title.c_str(), nullptr,nullptr);
+		context = new OpenGLContext(window);
+		context->Init();
 
-		glfwMakeContextCurrent(window);
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		
 
-		CACTUS_CORE_ASSERT(status,"Failed to initialize glad");
 		glfwSetWindowUserPointer(window, &data);
 
 		SetVSync(true);
@@ -166,7 +169,8 @@ namespace Cactus
 	void WindowsWindow::OnUpdate()
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(window);
+		context->SwapBuffers();
+		
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)

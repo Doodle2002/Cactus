@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Cactus/Window.h"
+#include "Cactus/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
 
@@ -29,6 +30,7 @@ namespace Cactus {
 	private:
 		GLFWwindow* window;
 
+		GraphicsContext* context;
 		struct WindowData
 		{
 			std::string title;

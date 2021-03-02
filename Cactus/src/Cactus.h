@@ -5,7 +5,6 @@
 #include "Cactus/Layer.h"
 
 #include "Cactus/ImGui/ImGuiLayer.h"
-//#include "Cactus/Input/InputLayer.h"
 #include "Cactus/Input.h"
 #include "Cactus/KeyCodes.h"
 #include "Cactus/MouseButtonCodes.h"

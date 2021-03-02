@@ -1,5 +1,6 @@
 workspace "Cactus"
 	architecture "x64"
+	startproject "Sandbox"
 
 	configurations
 	{
@@ -24,6 +25,7 @@ project "Cactus"
 	location "Cactus"
 	kind "StaticLib"
 	language "C++"
+	cppdialect "C++17"
 	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
@@ -35,7 +37,9 @@ project "Cactus"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
 
 	includedirs
@@ -56,9 +60,13 @@ project "Cactus"
 		"opengl32.lib"
 	}
 
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
+	}
 
 	filter "system:windows"
-		cppdialect "C++17"
+		
 		staticruntime "On"
 		systemversion "latest"
 
@@ -69,32 +77,29 @@ project "Cactus"
 			"GLFW_INCLUDE_NONE"
 		}
 
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
-		}
 
 	filter "configurations:Debug"
 		defines "CACTUS_DEBUG"
-		buildoptions "/MDd"
-		symbols "On"
+		runtime "Debug"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "CACTUS_RELEASE"
-		buildoptions "/MD"
-		optimize "On"
+		runtime "Release"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "CACTUS_DIST"
-		buildoptions "/MD"
-		optimize "On"
+		runtime "Release"
+		optimize "on"
 
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -109,8 +114,8 @@ project "Sandbox"
 	{
 		"Cactus/vendor/spdlog/include",
 		"Cactus/src",
-		"%{IncludeDir.glm}",
-		"Cactus/vendor"
+		"Cactus/vendor",
+		"%{IncludeDir.glm}"
 	}
 
 	links 
@@ -118,9 +123,9 @@ project "Sandbox"
 		"Cactus"
 	}
 
+	
+
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines 
@@ -131,15 +136,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "CACTUS_DEBUG"
-		buildoptions "/MDd"
-		symbols "On"
+		runtime "Debug"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "CACTUS_RELEASE"
-		buildoptions "/MD"
-		optimize "On"
+		runtime "Release"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "CACTUS_DIST"
-		buildoptions "/MD"
-		optimize "On"
+		runtime "Release"
+		optimize "on"

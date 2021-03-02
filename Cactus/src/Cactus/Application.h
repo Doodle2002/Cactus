@@ -9,6 +9,10 @@
 
 #include "Cactus/ImGui/ImGuiLayer.h"
 
+#include "Cactus/Renderer/Shader.h"
+#include "Cactus/Renderer/Buffer.h"
+#include "Cactus/Renderer/VertexArray.h"
+
 namespace Cactus {
 	class CACTUS_API Application
 	{
@@ -34,6 +38,9 @@ namespace Cactus {
 		LayerStack layerStack;
 
 		static Application* instance;
+
+		std::shared_ptr<Shader> shader;
+		std::shared_ptr<VertexArray> vertexArray;
 	};
 
 	//Client defined
