@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-
+#include <glm/glm.hpp>
 namespace Cactus
 {
 	class Shader
@@ -12,7 +12,9 @@ namespace Cactus
 
 		void Bind() const;
 		void Unbind() const;
+
+		void SetUniformMat4(const std::string& name, const glm::mat4& matrix);
 	private:
-		uint32_t rendererId;
+		uint32_t rendererID;
 	};
 }

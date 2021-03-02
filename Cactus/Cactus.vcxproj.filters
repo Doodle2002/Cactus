@@ -1349,6 +1349,10 @@
     <ClInclude Include="src\Cactus\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Cactus\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\Cactus\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\Cactus\Time.h" />
+    <ClInclude Include="src\Cactus\Core\Time.h" />
+    <ClInclude Include="src\Cactus\Core\Timestep.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Cactus\Application.cpp">
@@ -1391,5 +1395,7 @@
     <ClCompile Include="src\Cactus\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Cactus\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\Cactus\Renderer\OrthographicCamera.cpp" />
+    <ClCompile Include="src\Cactus\Core\Time.cpp" />
   </ItemGroup>
 </Project>

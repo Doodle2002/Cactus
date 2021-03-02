@@ -140,6 +140,9 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Cactus\Core\Time.h" />
+    <ClInclude Include="src\Cactus\Core\Timestep.h" />
+    <ClInclude Include="src\Cactus\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Cactus\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Cactus\Renderer\Renderer.h" />
     <ClInclude Include="src\Cactus.h" />
@@ -162,6 +165,7 @@
     <ClInclude Include="src\Cactus\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Cactus\Renderer\Shader.h" />
     <ClInclude Include="src\Cactus\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Cactus\Time.h" />
     <ClInclude Include="src\Cactus\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
@@ -585,6 +589,8 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Cactus\Core\Time.cpp" />
+    <ClCompile Include="src\Cactus\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Cactus\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Cactus\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Cactus\Application.cpp" />

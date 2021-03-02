@@ -2,6 +2,7 @@
 
 #include "Shader.h"
 #include <glad/glad.h>
+#include <glm/gtc/type_ptr.hpp>
 namespace Cactus
 {
 	Shader::Shader(const std::string& vertexSrc, const std::string& fragmentSrc)
@@ -74,9 +75,9 @@ namespace Cactus
 		// Vertex and fragment shaders are successfully compiled.
 		// Now time to link them together into a program.
 		// Get a program object.
-		rendererId = glCreateProgram();
+		rendererID = glCreateProgram();
 
-		GLuint program = rendererId;
+		GLuint program = rendererID;
 		// Attach our shaders to our program
 		glAttachShader(program, vertexShader);
 		glAttachShader(program, fragmentShader);
@@ -114,16 +115,23 @@ namespace Cactus
 
 	Shader::~Shader()
 	{
-		glDeleteProgram(rendererId);
+		glDeleteProgram(rendererID);
 	}
 
 	void Shader::Bind() const
 	{
-		glUseProgram(rendererId);
+		glUseProgram(rendererID);
 	}
 
 	void Shader::Unbind() const
 	{
 		glUseProgram(0);
+	}
+
+	void Shader::SetUniformMat4(const std::string& name, const glm::mat4& matrix)
+	{
+		GLint location = glGetUniformLocation(rendererID, name.c_str());
+
+		glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
 	}
 }

@@ -6,14 +6,12 @@
 #include "Cactus/LayerStack.h"
 #include "Cactus/Events/Event.h"
 #include "Cactus/Events/ApplicationEvent.h"
-
 #include "Cactus/ImGui/ImGuiLayer.h"
-
-#include "Cactus/Renderer/Shader.h"
-#include "Cactus/Renderer/Buffer.h"
-#include "Cactus/Renderer/VertexArray.h"
+#include "Cactus/Core/Timestep.h"
 
 namespace Cactus {
+	class Time;
+
 	class CACTUS_API Application
 	{
 	public:
@@ -26,24 +24,30 @@ namespace Cactus {
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
 
-		inline static Application& Get() { return *instance;  }
+		inline static Application& Get() { return *instance; }
 		inline Window& GetWindow() { return *window; }
+		void InternalTimeUpdate();
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
-		
+
+	private:
+
 		std::unique_ptr<Window> window;
 		ImGuiLayer* imGuiLayer;
 
 		bool running = false;
 		LayerStack layerStack;
+		float lastTime = 0.0f;
+	private:
 
 		static Application* instance;
 
-		std::shared_ptr<Shader> shader;
-		std::shared_ptr<VertexArray> vertexArray;
+		//friend void Time::SetDeltaTime(float delta);
 	};
 
 	//Client defined
 	Application* CreateApplication();
 
 }
+
+//#include "Cactus/Core/Time.h"
