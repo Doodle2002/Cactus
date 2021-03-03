@@ -19,7 +19,9 @@
 #include "Cactus/Renderer/Buffer.h"
 #include "Cactus/Renderer/VertexArray.h"
 #include "Cactus/Renderer/Shader.h"
+#include "Cactus/Renderer/Texture.h"
 
 #include "Cactus/Renderer/OrthographicCamera.h"
+#include "Cactus/OrthographicCameraController.h"
 
 #include "Cactus/EntryPoint.h"

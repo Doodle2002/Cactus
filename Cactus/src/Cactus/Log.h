@@ -5,7 +5,8 @@
 #include "spdlog/fmt/ostr.h"
 
 namespace Cactus {
-	class CACTUS_API Log
+
+	class Log
 	{
 	public:
 		static void Init();
@@ -14,7 +15,7 @@ namespace Cactus {
 		inline static std::shared_ptr<spdlog::logger>& GetClientLogger() { return clientLogger; }
 	private:
 		static std::shared_ptr<spdlog::logger> coreLogger;
-		static std::shared_ptr<spdlog::logger> clientLogger;
+		static std::shared_ptr<spdlog::logger> clientLogger;  
 	};
 }
 

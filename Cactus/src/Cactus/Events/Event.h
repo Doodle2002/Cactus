@@ -30,7 +30,7 @@ namespace Cactus
 
 #define EVENT_CLASS_CATEGORY(catagory) virtual int GetCatagoryFlags() const override { return catagory; }
 
-	class CACTUS_API Event
+	class Event
 	{
 		friend class EventDispatcher;
 	public:
@@ -49,21 +49,18 @@ namespace Cactus
 
 	class EventDispatcher
 	{
-		template <typename T>
-		using EventFn = std::function<bool(T&)>;
-
 	public:
 		EventDispatcher(Event& event)
 			: event(event)
 		{
 		}
 
-		template <typename T>
-		bool Dispatch(EventFn<T> func)
+		template <typename T, typename F>
+		bool Dispatch(const F& func)
 		{
 			if (event.GetEventType() == T::GetStaticType())
 			{
-				event.handled = func(*(T*)&event);
+				event.handled = func(static_cast<T&>(event));
 				return true;
 			}
 			return false;

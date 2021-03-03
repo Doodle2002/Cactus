@@ -68,6 +68,7 @@ namespace Cactus
 				data.height = height;
 
 				WindowResizeEvent event(width, height);
+				CACTUS_CORE_WARN("{0}, {1}", width, height);
 				data.eventCallback(event);
 				
 		});
@@ -170,7 +171,6 @@ namespace Cactus
 	{
 		glfwPollEvents();
 		context->SwapBuffers();
-		
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)

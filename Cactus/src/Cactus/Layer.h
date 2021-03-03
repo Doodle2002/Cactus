@@ -5,7 +5,7 @@
 
 namespace Cactus
 {
-	class CACTUS_API Layer
+	class Layer
 	{
 	public:
 		Layer(const std::string& name = "Layer");
@@ -14,6 +14,8 @@ namespace Cactus
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
 		virtual void OnUpdate() {}
+		virtual void OnRender() {}
+
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 

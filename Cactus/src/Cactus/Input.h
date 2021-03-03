@@ -3,7 +3,8 @@
 #include "Cactus/Core.h"
 
 namespace Cactus {
-	class CACTUS_API Input
+	
+	class Input
 	{
 	public:
 		Input();
@@ -25,6 +26,7 @@ namespace Cactus {
 		
 		inline static void Update() { instance->UpdateImpl(); }
 
+		//friend void Application::Run();
 		
 		static Input* instance;
 	protected:

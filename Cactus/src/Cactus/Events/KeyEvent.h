@@ -5,7 +5,7 @@
 
 namespace Cactus
 {
-	class CACTUS_API KeyEvent : public Event
+	class KeyEvent : public Event
 	{
 	public:
 		inline int GetKeyCode() const { return keyCode; }
@@ -18,7 +18,7 @@ namespace Cactus
 
 
 
-	class CACTUS_API KeyPressedEvent : public KeyEvent
+	class KeyPressedEvent : public KeyEvent
 	{
 	public:
 		KeyPressedEvent(int keycode, int repeatCount)
@@ -40,7 +40,7 @@ namespace Cactus
 
 
 
-	class CACTUS_API KeyReleasedEvent : public KeyEvent
+	class KeyReleasedEvent : public KeyEvent
 	{
 	public:
 		KeyReleasedEvent(int keycode)
@@ -58,7 +58,7 @@ namespace Cactus
 	};
 
 
-	class CACTUS_API KeyTypedEvent : public KeyEvent
+	class KeyTypedEvent : public KeyEvent
 	{
 	public:
 		KeyTypedEvent(int keycode)

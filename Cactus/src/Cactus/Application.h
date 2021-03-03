@@ -12,8 +12,9 @@
 namespace Cactus {
 	class Time;
 
-	class CACTUS_API Application
+	class Application
 	{
+		friend class Time;
 	public:
 		Application();
 		virtual ~Application();
@@ -24,11 +25,15 @@ namespace Cactus {
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
 
+		inline bool IsMinimized() { return minimized; }
+
 		inline static Application& Get() { return *instance; }
 		inline Window& GetWindow() { return *window; }
-		void InternalTimeUpdate();
+		
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
+		bool OnWindowResize(WindowResizeEvent& e);
+		void InternalTimeUpdate();
 
 	private:
 
@@ -36,6 +41,7 @@ namespace Cactus {
 		ImGuiLayer* imGuiLayer;
 
 		bool running = false;
+		bool minimized = false;
 		LayerStack layerStack;
 		float lastTime = 0.0f;
 	private:

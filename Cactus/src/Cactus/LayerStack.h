@@ -6,7 +6,7 @@
 #include <vector>
 namespace Cactus
 {
-	class CACTUS_API LayerStack
+	class LayerStack
 	{
 	public:
 		LayerStack();

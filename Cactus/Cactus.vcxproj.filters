@@ -7,14 +7,23 @@
     <Filter Include="src\Cactus">
       <UniqueIdentifier>{7F0F9B08-6BC7-DC55-D4CE-B5B1C0A57746}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Cactus\Core">
+      <UniqueIdentifier>{37BB94CA-A346-028F-AC57-858318625E8F}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Cactus\Events">
       <UniqueIdentifier>{8376D2C7-EF8C-D05D-3804-5C7FA459A1E5}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Cactus\ImGui">
       <UniqueIdentifier>{E9E7961D-D5E0-B56F-FE12-9BF4EA6A957B}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Cactus\Renderer">
+      <UniqueIdentifier>{053245FD-7193-220B-FA00-69BD666159CA}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform\OpenGL">
+      <UniqueIdentifier>{35A49437-A105-7245-2A73-B8F796D3A804}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Platform\Windows">
       <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
@@ -40,6 +49,9 @@
     <Filter Include="vendor\glm\glm\gtx">
       <UniqueIdentifier>{B3A6A76B-9F8A-68C1-08EB-6214F4ED5243}</UniqueIdentifier>
     </Filter>
+    <Filter Include="vendor\stb_image">
+      <UniqueIdentifier>{0DA0BA59-F998-D9AB-22CB-BE300E23B9B7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Cactus.h">
@@ -50,6 +62,12 @@
     </ClInclude>
     <ClInclude Include="src\Cactus\Core.h">
       <Filter>src\Cactus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cactus\Core\Time.h">
+      <Filter>src\Cactus\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cactus\Core\Timestep.h">
+      <Filter>src\Cactus\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Cactus\EntryPoint.h">
       <Filter>src\Cactus</Filter>
@@ -87,8 +105,53 @@
     <ClInclude Include="src\Cactus\MouseButtonCodes.h">
       <Filter>src\Cactus</Filter>
     </ClInclude>
+    <ClInclude Include="src\Cactus\Renderer\Buffer.h">
+      <Filter>src\Cactus\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cactus\Renderer\GraphicsContext.h">
+      <Filter>src\Cactus\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cactus\Renderer\OrthographicCamera.h">
+      <Filter>src\Cactus\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cactus\Renderer\RenderCommand.h">
+      <Filter>src\Cactus\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cactus\Renderer\Renderer.h">
+      <Filter>src\Cactus\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cactus\Renderer\RendererAPI.h">
+      <Filter>src\Cactus\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cactus\Renderer\Shader.h">
+      <Filter>src\Cactus\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cactus\Renderer\Texture.h">
+      <Filter>src\Cactus\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cactus\Renderer\VertexArray.h">
+      <Filter>src\Cactus\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Cactus\Window.h">
       <Filter>src\Cactus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
+      <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
       <Filter>src\Platform\Windows</Filter>
@@ -1338,25 +1401,17 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\Cactus\Renderer\GraphicsContext.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
-    <ClInclude Include="src\Cactus\Renderer\Shader.h" />
-    <ClInclude Include="src\Cactus\Renderer\Buffer.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
-    <ClInclude Include="src\Cactus\Renderer\Renderer.h" />
-    <ClInclude Include="src\Cactus\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
-    <ClInclude Include="src\Cactus\Renderer\RendererAPI.h" />
-    <ClInclude Include="src\Cactus\Renderer\RenderCommand.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
-    <ClInclude Include="src\Cactus\Renderer\OrthographicCamera.h" />
-    <ClInclude Include="src\Cactus\Time.h" />
-    <ClInclude Include="src\Cactus\Core\Time.h" />
-    <ClInclude Include="src\Cactus\Core\Timestep.h" />
+    <ClInclude Include="vendor\stb_image\stb_image.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cactus\OrthographicCameraController.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Cactus\Application.cpp">
       <Filter>src\Cactus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Cactus\Core\Time.cpp">
+      <Filter>src\Cactus\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Cactus\ImGui\ImGuiBuild.cpp">
       <Filter>src\Cactus\ImGui</Filter>
@@ -1376,6 +1431,48 @@
     <ClCompile Include="src\Cactus\Log.cpp">
       <Filter>src\Cactus</Filter>
     </ClCompile>
+    <ClCompile Include="src\Cactus\Renderer\Buffer.cpp">
+      <Filter>src\Cactus\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Cactus\Renderer\OrthographicCamera.cpp">
+      <Filter>src\Cactus\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Cactus\Renderer\RenderCommand.cpp">
+      <Filter>src\Cactus\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Cactus\Renderer\Renderer.cpp">
+      <Filter>src\Cactus\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Cactus\Renderer\RendererAPI.cpp">
+      <Filter>src\Cactus\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Cactus\Renderer\Shader.cpp">
+      <Filter>src\Cactus\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Cactus\Renderer\Texture.cpp">
+      <Filter>src\Cactus\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Cactus\Renderer\VertexArray.cpp">
+      <Filter>src\Cactus\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
@@ -1385,17 +1482,9 @@
     <ClCompile Include="src\cactus_pch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
-    <ClCompile Include="src\Cactus\Renderer\Shader.cpp" />
-    <ClCompile Include="src\Cactus\Renderer\Buffer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
-    <ClCompile Include="src\Cactus\Renderer\Renderer.cpp" />
-    <ClCompile Include="src\Cactus\Renderer\VertexArray.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
-    <ClCompile Include="src\Cactus\Renderer\RendererAPI.cpp" />
-    <ClCompile Include="src\Cactus\Renderer\RenderCommand.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
-    <ClCompile Include="src\Cactus\Renderer\OrthographicCamera.cpp" />
-    <ClCompile Include="src\Cactus\Core\Time.cpp" />
+    <ClCompile Include="vendor\stb_image\stb_image.cpp">
+      <Filter>vendor\stb_image</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Cactus\OrthographicCameraController.cpp" />
   </ItemGroup>
 </Project>

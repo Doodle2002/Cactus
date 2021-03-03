@@ -5,7 +5,7 @@
 
 namespace Cactus
 {
-	class CACTUS_API MouseMovedEvent : public Event
+	class MouseMovedEvent : public Event
 	{
 	public:
 		MouseMovedEvent(float x, float y)
@@ -28,7 +28,7 @@ namespace Cactus
 		float mouseX, mouseY;
 	};
 
-	class CACTUS_API MouseScrolledEvent : public Event
+	class MouseScrolledEvent : public Event
 	{
 	public:
 		MouseScrolledEvent(float xOffset, float yOffset) 
@@ -50,7 +50,7 @@ namespace Cactus
 		float xOffset, yOffset;
 	};
 
-	class CACTUS_API MouseButtonEvent : public Event
+	class MouseButtonEvent : public Event
 	{
 	public:
 		inline int GetMouseButton() const { return button; }
@@ -64,7 +64,7 @@ namespace Cactus
 		int button;
 	};
 	
-	class CACTUS_API MouseButtonPressedEvent : public MouseButtonEvent
+	class MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonPressedEvent(int button)
@@ -80,7 +80,7 @@ namespace Cactus
 		EVENT_CLASS_TYPE(MouseButtonPressed)
 	};
 
-	class CACTUS_API MouseButtonReleasedEvent : public MouseButtonEvent
+	class MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonReleasedEvent(int button)

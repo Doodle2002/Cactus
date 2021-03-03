@@ -15,7 +15,8 @@ namespace Cactus {
 
 		float GetRotation() const { return rotation; }
 		void SetRotation(float rotation) { this->rotation = rotation; RecalculateViewMatrix(); }
-
+		
+		void SetProjection(float left, float right, float bottom, float top);
 		const glm::mat4 GetProjectMatrix() const { return projectionMatrix; }
 		const glm::mat4 GetViewMatrix() const { return viewMatrix; }
 		const glm::mat4 GetViewProjectionMatrix() const { return viewProjectionMatrix; }

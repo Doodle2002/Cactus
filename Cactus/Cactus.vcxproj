@@ -77,7 +77,7 @@
       <PrecompiledHeaderFile>cactus_pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;CACTUS_PLATFORM_WINDOWS;CACTUS_BUILD_DLL;GLFW_INCLUDE_NONE;CACTUS_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -97,7 +97,7 @@
       <PrecompiledHeaderFile>cactus_pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;CACTUS_PLATFORM_WINDOWS;CACTUS_BUILD_DLL;GLFW_INCLUDE_NONE;CACTUS_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -121,7 +121,7 @@
       <PrecompiledHeaderFile>cactus_pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;CACTUS_PLATFORM_WINDOWS;CACTUS_BUILD_DLL;GLFW_INCLUDE_NONE;CACTUS_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -140,14 +140,11 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Cactus\Core\Time.h" />
-    <ClInclude Include="src\Cactus\Core\Timestep.h" />
-    <ClInclude Include="src\Cactus\Renderer\OrthographicCamera.h" />
-    <ClInclude Include="src\Cactus\Renderer\RenderCommand.h" />
-    <ClInclude Include="src\Cactus\Renderer\Renderer.h" />
     <ClInclude Include="src\Cactus.h" />
     <ClInclude Include="src\Cactus\Application.h" />
     <ClInclude Include="src\Cactus\Core.h" />
+    <ClInclude Include="src\Cactus\Core\Time.h" />
+    <ClInclude Include="src\Cactus\Core\Timestep.h" />
     <ClInclude Include="src\Cactus\EntryPoint.h" />
     <ClInclude Include="src\Cactus\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Cactus\Events\Event.h" />
@@ -160,16 +157,22 @@
     <ClInclude Include="src\Cactus\LayerStack.h" />
     <ClInclude Include="src\Cactus\Log.h" />
     <ClInclude Include="src\Cactus\MouseButtonCodes.h" />
+    <ClInclude Include="src\Cactus\OrthographicCameraController.h" />
     <ClInclude Include="src\Cactus\Renderer\Buffer.h" />
     <ClInclude Include="src\Cactus\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Cactus\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\Cactus\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\Cactus\Renderer\Renderer.h" />
     <ClInclude Include="src\Cactus\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Cactus\Renderer\Shader.h" />
+    <ClInclude Include="src\Cactus\Renderer\Texture.h" />
     <ClInclude Include="src\Cactus\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Cactus\Time.h" />
     <ClInclude Include="src\Cactus\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
@@ -587,32 +590,38 @@
     <ClInclude Include="vendor\glm\glm\vec3.hpp" />
     <ClInclude Include="vendor\glm\glm\vec4.hpp" />
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
+    <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Cactus\Core\Time.cpp" />
-    <ClCompile Include="src\Cactus\Renderer\OrthographicCamera.cpp" />
-    <ClCompile Include="src\Cactus\Renderer\RenderCommand.cpp" />
-    <ClCompile Include="src\Cactus\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Cactus\Application.cpp" />
+    <ClCompile Include="src\Cactus\Core\Time.cpp" />
     <ClCompile Include="src\Cactus\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Cactus\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Cactus\Input.cpp" />
     <ClCompile Include="src\Cactus\Layer.cpp" />
     <ClCompile Include="src\Cactus\LayerStack.cpp" />
     <ClCompile Include="src\Cactus\Log.cpp" />
+    <ClCompile Include="src\Cactus\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Cactus\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Cactus\Renderer\OrthographicCamera.cpp" />
+    <ClCompile Include="src\Cactus\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Cactus\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Cactus\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Cactus\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Cactus\Renderer\Texture.cpp" />
     <ClCompile Include="src\Cactus\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\cactus_pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="vendor\stb_image\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">

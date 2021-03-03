@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Cactus/Application.h"
 namespace Cactus 
 {
 	//Most dodgy thing I've ever written
@@ -9,6 +10,7 @@ namespace Cactus
 
 		inline static const float GetDeltaTime() { return deltaTime; }
 		inline static const float GetTime() { return time; }
+
 	private:
 		static void Update();
 

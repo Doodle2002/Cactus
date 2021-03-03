@@ -25,7 +25,7 @@ namespace Cactus
 	};
 
 	//Interace for all different kinds of windows
-	class CACTUS_API Window
+	class Window
 	{
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;
