@@ -3,7 +3,7 @@
 
 #include "cactus_pch.h"
 
-#include "Cactus/Core.h"
+#include "Cactus/Core/Core.h"
 #include "Cactus/Events/Event.h"
 
 #include "Cactus/Events/ApplicationEvent.h"
@@ -40,6 +40,6 @@ namespace Cactus
 		virtual bool IsVSync() const = 0;
 
 		virtual void* GetNativeWindow() const = 0;
-		static Window* Create(const WindowProps& props = WindowProps());
+		static Scope<Window> Create(const WindowProps& props = WindowProps());
 	};
 }

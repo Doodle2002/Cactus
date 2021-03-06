@@ -141,22 +141,25 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Cactus.h" />
-    <ClInclude Include="src\Cactus\Application.h" />
-    <ClInclude Include="src\Cactus\Core.h" />
+    <ClInclude Include="src\Cactus\Core\Application.h" />
+    <ClInclude Include="src\Cactus\Core\Core.h" />
+    <ClInclude Include="src\Cactus\Debug\DebugLayer.h" />
+    <ClInclude Include="src\Cactus\Debug\Instrumentor.h" />
+    <ClInclude Include="src\Cactus\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Cactus\Core\Time.h" />
     <ClInclude Include="src\Cactus\Core\Timestep.h" />
-    <ClInclude Include="src\Cactus\EntryPoint.h" />
+    <ClInclude Include="src\Cactus\Core\EntryPoint.h" />
     <ClInclude Include="src\Cactus\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Cactus\Events\Event.h" />
     <ClInclude Include="src\Cactus\Events\KeyEvent.h" />
     <ClInclude Include="src\Cactus\Events\MouseEvent.h" />
     <ClInclude Include="src\Cactus\ImGui\ImGuiLayer.h" />
-    <ClInclude Include="src\Cactus\Input.h" />
-    <ClInclude Include="src\Cactus\KeyCodes.h" />
-    <ClInclude Include="src\Cactus\Layer.h" />
-    <ClInclude Include="src\Cactus\LayerStack.h" />
-    <ClInclude Include="src\Cactus\Log.h" />
-    <ClInclude Include="src\Cactus\MouseButtonCodes.h" />
+    <ClInclude Include="src\Cactus\Core\Input.h" />
+    <ClInclude Include="src\Cactus\Core\KeyCodes.h" />
+    <ClInclude Include="src\Cactus\Core\Layer.h" />
+    <ClInclude Include="src\Cactus\Core\LayerStack.h" />
+    <ClInclude Include="src\Cactus\Core\Log.h" />
+    <ClInclude Include="src\Cactus\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\Cactus\OrthographicCameraController.h" />
     <ClInclude Include="src\Cactus\Renderer\Buffer.h" />
     <ClInclude Include="src\Cactus\Renderer\GraphicsContext.h" />
@@ -167,7 +170,7 @@
     <ClInclude Include="src\Cactus\Renderer\Shader.h" />
     <ClInclude Include="src\Cactus\Renderer\Texture.h" />
     <ClInclude Include="src\Cactus\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Cactus\Window.h" />
+    <ClInclude Include="src\Cactus\Core\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
@@ -593,14 +596,16 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Cactus\Application.cpp" />
+    <ClCompile Include="src\Cactus\Core\Application.cpp" />
+    <ClCompile Include="src\Cactus\Debug\DebugLayer.cpp" />
+    <ClCompile Include="src\Cactus\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\Cactus\Core\Time.cpp" />
     <ClCompile Include="src\Cactus\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Cactus\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="src\Cactus\Input.cpp" />
-    <ClCompile Include="src\Cactus\Layer.cpp" />
-    <ClCompile Include="src\Cactus\LayerStack.cpp" />
-    <ClCompile Include="src\Cactus\Log.cpp" />
+    <ClCompile Include="src\Cactus\Core\Input.cpp" />
+    <ClCompile Include="src\Cactus\Core\Layer.cpp" />
+    <ClCompile Include="src\Cactus\Core\LayerStack.cpp" />
+    <ClCompile Include="src\Cactus\Core\Log.cpp" />
     <ClCompile Include="src\Cactus\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Cactus\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Cactus\Renderer\OrthographicCamera.cpp" />

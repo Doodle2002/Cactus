@@ -1,5 +1,5 @@
 #include "cactus_pch.h"
-#include "Cactus/Log.h"
+#include "Log.h"
 
 #include "spdlog/sinks/stdout_color_sinks.h"
 namespace Cactus {

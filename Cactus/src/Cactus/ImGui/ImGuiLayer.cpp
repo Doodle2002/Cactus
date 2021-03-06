@@ -1,5 +1,5 @@
 #include "cactus_pch.h"
-#include "Cactus/ImGui/ImGuiLayer.h"
+#include "ImGuiLayer.h"
 
 #include <imgui.h>
 
@@ -7,7 +7,7 @@
 #include "examples/imgui_impl_glfw.h"
 #include "examples/imgui_impl_opengl3.h"
 
-#include "Cactus/Application.h"
+#include "Cactus/Core/Application.h"
 
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
@@ -89,11 +89,5 @@ namespace Cactus
 			ImGui::RenderPlatformWindowsDefault();
 			glfwMakeContextCurrent(backup_current_context);
 		}
-	}
-
-	void ImGuiLayer::OnImGuiRender()
-	{
-		static bool show = true;
-		ImGui::ShowDemoWindow(&show);
 	}
 }

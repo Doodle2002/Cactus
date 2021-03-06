@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Cactus/Events/Event.h"
+#include "Event.h"
 #include "cactus_pch.h"
 
 namespace Cactus
@@ -19,6 +19,7 @@ namespace Cactus
 		{
 			std::stringstream ss;
 			ss << "MouseMovedEvent: " << mouseX << ", " << mouseY;
+			
 			return ss.str();
 		}
 

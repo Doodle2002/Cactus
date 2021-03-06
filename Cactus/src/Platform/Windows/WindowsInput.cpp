@@ -1,8 +1,8 @@
 #include "cactus_pch.h"
 #include "WindowsInput.h"
 
-#include "Cactus/KeyCodes.h"
-#include "Cactus/Application.h"
+#include "Cactus/Core/KeyCodes.h"
+#include "Cactus/Core/Application.h"
 #include <GLFW/glfw3.h>
 namespace Cactus
 {

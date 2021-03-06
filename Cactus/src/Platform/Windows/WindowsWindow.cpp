@@ -15,22 +15,26 @@ namespace Cactus
 	{
 		CACTUS_CORE_ERROR("GLFW Error ({0}): {1}", error, description);
 	}
-	Window* Window::Create(const WindowProps& props) 
+	Scope<Window> Window::Create(const WindowProps& props) 
 	{
-		return new WindowsWindow(props);
+		return CreateScope<WindowsWindow>(props);
 	}
 
 	WindowsWindow::WindowsWindow(const WindowProps& props) 
 	{
+
 		Init(props);
 	}
 
 	WindowsWindow::~WindowsWindow()
 	{
+
+		Shutdown();
 	}
 
 	void WindowsWindow::Init(const WindowProps& props)
 	{
+		CACTUS_PROFILE_FUNCTION();
 		data.title = props.title;
 		data.width = props.width;
 		data.height = props.height;
@@ -164,17 +168,20 @@ namespace Cactus
 
 	void WindowsWindow::Shutdown()
 	{
+		CACTUS_PROFILE_FUNCTION();
 		glfwDestroyWindow(window);
 	}
 
 	void WindowsWindow::OnUpdate()
 	{
+		CACTUS_PROFILE_FUNCTION();
 		glfwPollEvents();
 		context->SwapBuffers();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)
 	{
+		CACTUS_PROFILE_FUNCTION();
 		if (enabled) {
 			glfwSwapInterval(1);
 		}

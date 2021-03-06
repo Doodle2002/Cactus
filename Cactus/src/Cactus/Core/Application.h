@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Cactus/Core.h"
+#include "Cactus/Core/Core.h"
 
-#include "Cactus/Window.h"
-#include "Cactus/LayerStack.h"
+#include "Cactus/Core/Window.h"
+#include "Cactus/Core/LayerStack.h"
 #include "Cactus/Events/Event.h"
 #include "Cactus/Events/ApplicationEvent.h"
 #include "Cactus/ImGui/ImGuiLayer.h"
@@ -37,7 +37,7 @@ namespace Cactus {
 
 	private:
 
-		std::unique_ptr<Window> window;
+		Scope<Window> window;
 		ImGuiLayer* imGuiLayer;
 
 		bool running = false;

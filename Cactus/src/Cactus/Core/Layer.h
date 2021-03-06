@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Cactus/Core.h"
+#include "Cactus/Core/Core.h"
 #include "Cactus/Events/Event.h"
 
 namespace Cactus

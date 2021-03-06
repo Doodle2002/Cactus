@@ -25,9 +25,9 @@ namespace Cactus {
 			rendererAPI->Clear();
 		}
 
-		inline static void DrawIndexed(const Ref<VertexArray>& vertexArray)
+		inline static void DrawIndexed(const Ref<VertexArray>& vertexArray, uint32_t indexCount = 0)
 		{
-			rendererAPI->DrawIndexed(vertexArray);
+			rendererAPI->DrawIndexed(vertexArray, indexCount);
 		}
 
 	private:

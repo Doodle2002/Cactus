@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Cactus/Events/Event.h"
+#include "Event.h"
 
 namespace Cactus {
 

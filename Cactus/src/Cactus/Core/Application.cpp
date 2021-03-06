@@ -1,14 +1,15 @@
 #include "cactus_pch.h"
 
-#include "Cactus/Application.h"
-#include "Cactus/Log.h"
-#include "Cactus/Input.h"
+#include "Application.h"
+#include "Cactus/Core/Log.h"
+#include "Cactus/Core/Input.h"
 #include "Cactus/Renderer/Renderer.h"
 
 #include "glm/glm.hpp"
 
 //#include <glfw/glfw3.h>
 
+#include <glad/glad.h>
 #include "Cactus/Core/Time.h"
 
 namespace Cactus {
@@ -20,13 +21,15 @@ namespace Cactus {
 
 	Application::Application()
 	{
+		CACTUS_PROFILE_FUNCTION();
 
 		CACTUS_CORE_ASSERT(!instance, "Application instance already exists!");
 		instance = this;
-		window = std::unique_ptr<Window>(Window::Create());
+		window = Window::Create();
 		window->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
 
 		Renderer::Init();
+
 		imGuiLayer = new ImGuiLayer();
 		PushOverlay(imGuiLayer);
 
@@ -66,40 +69,53 @@ namespace Cactus {
 
 	void Application::Run()
 	{
+		CACTUS_PROFILE_FUNCTION();
 		if (running)
 		{
 			return;
 		}
+
 		running = true;
+
+
 		while (running)
 		{
+			CACTUS_PROFILE_SCOPE("while(running) - Application::Run");
 
+			glEnable(GL_BLEND);
+
+			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+			
 
 			InternalTimeUpdate();
-			//Time::SetDeltaTime(time - lastTime);
-			//float delta = time - lastTime;
 
 			Input::Update();
 
-			
-			for (Layer* layer : layerStack)
 			{
-				layer->OnUpdate();
+				CACTUS_PROFILE_SCOPE("Application -> Layer::OnUpdate");
+				for (Layer* layer : layerStack)
+					layer->OnUpdate();
 			}
+			
 
 			if (!minimized)
 			{
+				CACTUS_PROFILE_SCOPE("Application -> Layer::OnRender");
 				for (Layer* layer : layerStack)
-				{
 					layer->OnRender();
-				}
 			}
 
+
 			imGuiLayer->Begin();
-			for (Layer* layer : layerStack)
 			{
-				layer->OnImGuiRender();
+				CACTUS_PROFILE_SCOPE("Application -> Layer::OnImGuiRender");
+				for (Layer* layer : layerStack)
+				{
+					layer->OnImGuiRender();
+				}
 			}
+			
 			imGuiLayer->End();
 			window->OnUpdate();
 		}
@@ -120,7 +136,30 @@ namespace Cactus {
 		}
 
 		minimized = false;
-		Renderer::OnWindowResize(e.GetWidth(), e.GetHeight());
+		
+		//TODO: Move this to renderer class (and check if option 'maintain aspect' is true)
+
+		//THIS ACTUALL WORKS (but is turned off because it might mess up the 2d camera)
+		/*
+		float preferredRatio = 1280.0f / 720.0f;
+
+		float width = e.GetWidth();
+		float height = e.GetHeight();
+
+		float ratio = (float)e.GetWidth() / (float)e.GetHeight();
+		if (e.GetWidth() / e.GetHeight() < 16.0f / 9.0f)
+		{
+			height = e.GetWidth() * (1.0f / preferredRatio);
+		}
+		else
+		{
+			width = e.GetHeight() * preferredRatio;
+		}
+
+		RenderCommand::SetViewport(width, 0, width, height);
+		*/
+
+		Renderer::OnWindowResize(e.GetWidth(),e.GetHeight());
 		return false;
 	}
 

@@ -5,9 +5,16 @@
 #include <glad/glad.h>
 
 namespace Cactus {
-
-	OpenGLVertexBuffer::OpenGLVertexBuffer(float* vertices, uint32_t size) 
+	OpenGLVertexBuffer::OpenGLVertexBuffer(uint32_t size)
 	{
+		CACTUS_PROFILE_FUNCTION();
+		glCreateBuffers(1, &rendererID);
+		glBindBuffer(GL_ARRAY_BUFFER, rendererID);
+		glBufferData(GL_ARRAY_BUFFER, size, nullptr, GL_DYNAMIC_DRAW);
+	}
+	OpenGLVertexBuffer::OpenGLVertexBuffer(float* vertices, uint32_t size)
+	{
+		CACTUS_PROFILE_FUNCTION();
 		glCreateBuffers(1, &rendererID);
 		glBindBuffer(GL_ARRAY_BUFFER, rendererID);
 		glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
@@ -28,11 +35,18 @@ namespace Cactus {
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
+	void OpenGLVertexBuffer::SetData(const void* data, uint32_t datasize)
+	{
+		glBindBuffer(GL_ARRAY_BUFFER, rendererID);
+		glBufferSubData(GL_ARRAY_BUFFER, 0, datasize, data);
+	}
+
 	//------------------------------------------------------------------
 
 	OpenGLIndexBuffer::OpenGLIndexBuffer(uint32_t* indices, uint32_t count)
 		: count(count)
 	{
+		CACTUS_PROFILE_FUNCTION();
 		glCreateBuffers(1, &rendererID);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, rendererID);
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, count*sizeof(uint32_t), indices, GL_STATIC_DRAW);

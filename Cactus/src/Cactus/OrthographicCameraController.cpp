@@ -1,9 +1,9 @@
 #include "cactus_pch.h"
 
 #include "OrthographicCameraController.h"
-#include "Cactus/Input.h"
+#include "Cactus/Core/Input.h"
 #include "Cactus/Core/Time.h"
-#include "Cactus/KeyCodes.h"
+#include "Cactus/Core/KeyCodes.h"
 
 namespace Cactus {
 
@@ -15,7 +15,6 @@ namespace Cactus {
 	void OrthographicCameraController::OnUpdate()
 	{
 		float dt = Time::GetDeltaTime();
-
 
 		if (Input::KeyDown(CACTUS_KEY_W))
 			cameraPosition.y += cameraTranslationSpeed * zoomLevel * dt;
@@ -38,6 +37,7 @@ namespace Cactus {
 			cameraRotation = 0.0f;
 		}
 
+
 		if (Input::KeyPressed(CACTUS_KEY_R))
 			cameraRotation = 0.0f;
 		if (Input::KeyPressed(CACTUS_KEY_T))
@@ -58,8 +58,8 @@ namespace Cactus {
 	bool OrthographicCameraController::OnMouseScrolled(MouseScrolledEvent& e)
 	{
 		zoomLevel -= e.GetYOffset()*zoomStep * zoomLevel;
-		zoomLevel = std::max(zoomLevel, 0.1f);
-		zoomLevel = std::min(zoomLevel, 10.0f);
+		zoomLevel = std::max(zoomLevel, minZoom);
+		zoomLevel = std::min(zoomLevel, maxZoom);
 		camera.SetProjection(-aspectRatio * zoomLevel, aspectRatio * zoomLevel, -zoomLevel, zoomLevel);
 		return false;
 	}

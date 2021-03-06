@@ -13,6 +13,7 @@ namespace Cactus
 	}
 	void OpenGLContext::Init()
 	{
+		CACTUS_PROFILE_FUNCTION();
 		glfwMakeContextCurrent(windowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		CACTUS_CORE_ASSERT(status, "Failed to initialize glad");

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Cactus/Layer.h"
+#include "Cactus/Core/Layer.h"
 #include "Cactus/Events/MouseEvent.h"
 #include "Cactus/Events/KeyEvent.h"
 #include "Cactus/Events/ApplicationEvent.h"
@@ -15,7 +15,6 @@ namespace Cactus
 
 		virtual void OnAttach() override;
 		virtual void OnDetach() override;
-		virtual void OnImGuiRender();
 
 		void Begin();
 		void End();

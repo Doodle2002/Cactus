@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Cactus/Core.h"
-#include "Cactus/Layer.h"
+#include "Cactus/Core/Core.h"
+#include "Cactus/Core/Layer.h"
 
 #include <vector>
 namespace Cactus

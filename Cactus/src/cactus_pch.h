@@ -12,7 +12,8 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "Cactus/Log.h"
+#include "Cactus/Core/Log.h"
+#include "Cactus/Debug/Instrumentor.h"
 
 #ifdef CACTUS_PLATFORM_WINDOWS
 	#include <Windows.h>

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "cactus_pch.h"
-#include "Cactus/Events/Event.h"
+#include "Event.h"
 
 namespace Cactus
 {

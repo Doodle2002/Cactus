@@ -18,6 +18,12 @@ namespace Cactus {
 		OrthographicCamera& GetCamera() { return camera; }
 		const OrthographicCamera& GetCamera() const { return camera; }
 
+		float GetZoomLevel() const { return zoomLevel; }
+		void SetZoomLevel(float level) { zoomLevel = level; }
+
+		float GetAspectRatio() const { return aspectRatio; }
+		
+
 	private:
 		bool OnMouseScrolled(MouseScrolledEvent& e);
 		bool OnWindowResized(WindowResizeEvent& e);
@@ -31,7 +37,6 @@ namespace Cactus {
 		glm::vec3 cameraPosition = { 0.0f, 0.0f, 0.0f };
 		float cameraRotation = 0.0f;
 		
-		float cameraTranslationSpeed = 1.5f, cameraRotationSpeed = 180.0f, zoomStep = 0.15f;
-		
+		float cameraTranslationSpeed = 2.5f, cameraRotationSpeed = 180.0f, zoomStep = 0.15f, minZoom = 0.1f, maxZoom = 100.0f;
 	};
 }

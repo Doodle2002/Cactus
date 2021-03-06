@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Cactus/Window.h"
+#include "Cactus/Core/Window.h"
 #include "Cactus/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
