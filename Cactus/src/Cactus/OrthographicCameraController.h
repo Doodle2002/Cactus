@@ -5,6 +5,7 @@
 #include "Cactus/Events/MouseEvent.h"
 
 #include <glm/glm.hpp>
+
 namespace Cactus {
 	class OrthographicCameraController
 	{
@@ -15,6 +16,7 @@ namespace Cactus {
 		void OnUpdate();
 		void OnEvent(Event& e);
 
+		void Resize(float width, float height);
 		OrthographicCamera& GetCamera() { return camera; }
 		const OrthographicCamera& GetCamera() const { return camera; }
 
@@ -22,7 +24,9 @@ namespace Cactus {
 		void SetZoomLevel(float level) { zoomLevel = level; }
 
 		float GetAspectRatio() const { return aspectRatio; }
-		
+		//void SetSize(float width, float height);
+		void SetAutoResize(bool autoResize) { this->autoResize = autoResize; }
+		bool GetAutoResize() { return autoResize; }
 
 	private:
 		bool OnMouseScrolled(MouseScrolledEvent& e);
@@ -32,6 +36,7 @@ namespace Cactus {
 		float zoomLevel = 1.0f;
 		bool rotation = false;
 
+		bool autoResize = true;
 		OrthographicCamera camera;
 
 		glm::vec3 cameraPosition = { 0.0f, 0.0f, 0.0f };

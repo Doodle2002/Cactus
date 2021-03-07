@@ -19,13 +19,15 @@ namespace Cactus {
 	Application* Application::instance = nullptr;
 
 
-	Application::Application()
+	Application::Application(const std::string& name)
 	{
 		CACTUS_PROFILE_FUNCTION();
 
 		CACTUS_CORE_ASSERT(!instance, "Application instance already exists!");
 		instance = this;
-		window = Window::Create();
+
+
+		window = Window::Create(WindowProps(name));
 		window->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
 
 		Renderer::Init();
@@ -166,5 +168,10 @@ namespace Cactus {
 	void Application::InternalTimeUpdate()
 	{
 		Time::Update();
+	}
+
+	void Application::Close()
+	{
+		running = false;
 	}
 }

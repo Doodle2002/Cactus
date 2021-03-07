@@ -22,6 +22,8 @@ private:
 	Cactus::Ref<Cactus::Shader> shader;
 	Cactus::OrthographicCameraController cameraController;
 	Cactus::Ref<Cactus::Texture2D> texture;
+	Cactus::Ref<Cactus::Framebuffer> framebuffer;
+	//Cactus::Ref<Cactus::SubTexture2D> texture;
 
 	glm::vec4 color = glm::vec4(1.0f,0.0f,0.0f,1.0f);
 

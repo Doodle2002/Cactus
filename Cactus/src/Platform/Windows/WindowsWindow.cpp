@@ -72,7 +72,7 @@ namespace Cactus
 				data.height = height;
 
 				WindowResizeEvent event(width, height);
-				CACTUS_CORE_WARN("{0}, {1}", width, height);
+				//CACTUS_CORE_WARN("{0}, {1}", width, height);
 				data.eventCallback(event);
 				
 		});

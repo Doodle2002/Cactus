@@ -16,7 +16,7 @@ namespace Cactus {
 	{
 		friend class Time;
 	public:
-		Application();
+		Application(const std::string& name = "Cactus App");
 		virtual ~Application();
 
 		void Run();
@@ -30,6 +30,7 @@ namespace Cactus {
 		inline static Application& Get() { return *instance; }
 		inline Window& GetWindow() { return *window; }
 		
+		void Close();
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e);

@@ -66,8 +66,18 @@ namespace Cactus {
 
 	bool OrthographicCameraController::OnWindowResized(WindowResizeEvent& e)
 	{
-		aspectRatio = (float) e.GetWidth() / (float) e.GetHeight();
-		camera.SetProjection(-aspectRatio * zoomLevel, aspectRatio * zoomLevel, -zoomLevel, zoomLevel);
+		
+
+		if (autoResize)
+		{
+			Resize(e.GetWidth(), e.GetHeight());
+		}
 		return false;
+	}
+
+	void OrthographicCameraController::Resize(float width, float height)
+	{
+		aspectRatio = width / height;
+		camera.SetProjection(-aspectRatio * zoomLevel, aspectRatio * zoomLevel, -zoomLevel, zoomLevel);
 	}
 }

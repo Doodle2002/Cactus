@@ -1,6 +1,8 @@
+include "./vendor/premake/premake_customization/solution_items.lua"
+
 workspace "Cactus"
 	architecture "x64"
-	startproject "Sandbox"
+	startproject "Cactus-Editor"
 
 	configurations
 	{
@@ -8,15 +10,28 @@ workspace "Cactus"
 		"Release",
 		"Dist"
 	}
+	
+	solution_items
+	{
+		".editorconfig"
+	}
+
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
+--[[
 IncludeDir["GLFW"] = "Cactus/vendor/GLFW/include"
 IncludeDir["Glad"] = "Cactus/vendor/Glad/include"
 IncludeDir["imgui"] = "Cactus/vendor/imgui"
 IncludeDir["glm"] = "Cactus/vendor/glm"
 IncludeDir["stb_image"] = "Cactus/vendor/stb_image"
+--]]
+IncludeDir["GLFW"] = "%{wks.location}/Cactus/vendor/GLFW/include"
+IncludeDir["Glad"] = "%{wks.location}/Cactus/vendor/Glad/include"
+IncludeDir["imgui"] = "%{wks.location}/Cactus/vendor/imgui"
+IncludeDir["glm"] = "%{wks.location}/Cactus/vendor/glm"
+IncludeDir["stb_image"] = "%{wks.location}/Cactus/vendor/stb_image"
 
 
 group "Dependencies"
@@ -25,9 +40,11 @@ group "Dependencies"
 	include "Cactus/vendor/imgui"
 group ""
 
+include "Cactus"
+include "Sandbox"
+include "Cactus-Editor"
 
-
-
+--[[
 project "Cactus"
 	location "Cactus"
 	kind "StaticLib"
@@ -158,3 +175,4 @@ project "Sandbox"
 		defines "CACTUS_DIST"
 		runtime "Release"
 		optimize "on"
+		--]]

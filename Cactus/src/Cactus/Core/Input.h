@@ -27,12 +27,9 @@ namespace Cactus {
 		inline static void Update() { instance->UpdateImpl(); }
 
 		//friend void Application::Run();
-		
-		static Input* instance;
 	protected:
-		//virtual bool KeyPressedImpl(int keycode) = 0;
+		static Input* instance;
 
-		//virtual bool MouseButtonPressedImpl(int button) = 0;
 		virtual float GetMouseXImpl() = 0;
 		virtual float GetMouseYImpl() = 0;
 		virtual void UpdateImpl() = 0;

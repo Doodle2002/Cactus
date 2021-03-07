@@ -10,7 +10,7 @@ public:
 	Sandbox()
 	{
 		PushLayer(new Sandbox2D());
-		PushOverlay(new Cactus::DebugLayer());
+		//PushOverlay(new Cactus::DebugLayer());
 	}
 
 	~Sandbox()

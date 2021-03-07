@@ -21,7 +21,9 @@
 
 #include "Cactus/Renderer/Buffer.h"
 #include "Cactus/Renderer/Shader.h"
+#include "Cactus/Renderer/Framebuffer.h"
 #include "Cactus/Renderer/Texture.h"
+#include "Cactus/Renderer/SubTexture2D.h"
 #include "Cactus/Renderer/VertexArray.h"
 
 #include "Cactus/Debug/DebugLayer.h"

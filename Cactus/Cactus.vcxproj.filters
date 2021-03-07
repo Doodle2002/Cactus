@@ -10,6 +10,9 @@
     <Filter Include="src\Cactus\Core">
       <UniqueIdentifier>{37BB94CA-A346-028F-AC57-858318625E8F}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Cactus\Debug">
+      <UniqueIdentifier>{357D381D-2176-576F-4AA8-3CF43600377B}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Cactus\Events">
       <UniqueIdentifier>{8376D2C7-EF8C-D05D-3804-5C7FA459A1E5}</UniqueIdentifier>
     </Filter>
@@ -57,11 +60,47 @@
     <ClInclude Include="src\Cactus.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\Cactus\Core\Application.h">
+      <Filter>src\Cactus\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cactus\Core\Core.h">
+      <Filter>src\Cactus\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cactus\Core\EntryPoint.h">
+      <Filter>src\Cactus\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cactus\Core\Input.h">
+      <Filter>src\Cactus\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cactus\Core\KeyCodes.h">
+      <Filter>src\Cactus\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cactus\Core\Layer.h">
+      <Filter>src\Cactus\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cactus\Core\LayerStack.h">
+      <Filter>src\Cactus\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cactus\Core\Log.h">
+      <Filter>src\Cactus\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cactus\Core\MouseButtonCodes.h">
+      <Filter>src\Cactus\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Cactus\Core\Time.h">
       <Filter>src\Cactus\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Cactus\Core\Timestep.h">
       <Filter>src\Cactus\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cactus\Core\Window.h">
+      <Filter>src\Cactus\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cactus\Debug\DebugLayer.h">
+      <Filter>src\Cactus\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cactus\Debug\Instrumentor.h">
+      <Filter>src\Cactus\Debug</Filter>
     </ClInclude>
     <ClInclude Include="src\Cactus\Events\ApplicationEvent.h">
       <Filter>src\Cactus\Events</Filter>
@@ -84,6 +123,9 @@
     <ClInclude Include="src\Cactus\Renderer\Buffer.h">
       <Filter>src\Cactus\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Cactus\Renderer\Framebuffer.h">
+      <Filter>src\Cactus\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Cactus\Renderer\GraphicsContext.h">
       <Filter>src\Cactus\Renderer</Filter>
     </ClInclude>
@@ -96,10 +138,16 @@
     <ClInclude Include="src\Cactus\Renderer\Renderer.h">
       <Filter>src\Cactus\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Cactus\Renderer\Renderer2D.h">
+      <Filter>src\Cactus\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Cactus\Renderer\RendererAPI.h">
       <Filter>src\Cactus\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Cactus\Renderer\Shader.h">
+      <Filter>src\Cactus\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cactus\Renderer\SubTexture2D.h">
       <Filter>src\Cactus\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Cactus\Renderer\Texture.h">
@@ -112,6 +160,9 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLFramebuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
@@ -1377,43 +1428,28 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Cactus\Core\Application.h">
-      <Filter>src\Cactus</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Cactus\Core\Core.h">
-      <Filter>src\Cactus</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Cactus\Core\EntryPoint.h">
-      <Filter>src\Cactus</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Cactus\Core\Input.h">
-      <Filter>src\Cactus</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Cactus\Core\KeyCodes.h">
-      <Filter>src\Cactus</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Cactus\Core\Layer.h">
-      <Filter>src\Cactus</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Cactus\Core\LayerStack.h">
-      <Filter>src\Cactus</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Cactus\Core\Log.h">
-      <Filter>src\Cactus</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Cactus\Core\MouseButtonCodes.h">
-      <Filter>src\Cactus</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Cactus\Core\Window.h">
-      <Filter>src\Cactus</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Cactus\Renderer\Renderer2D.h" />
-    <ClInclude Include="src\Cactus\Debug\DebugLayer.h" />
-    <ClInclude Include="src\Cactus\Debug\Instrumentor.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Cactus\Core\Application.cpp">
+      <Filter>src\Cactus\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Cactus\Core\Input.cpp">
+      <Filter>src\Cactus\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Cactus\Core\Layer.cpp">
+      <Filter>src\Cactus\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Cactus\Core\LayerStack.cpp">
+      <Filter>src\Cactus\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Cactus\Core\Log.cpp">
+      <Filter>src\Cactus\Core</Filter>
+    </ClCompile>
     <ClCompile Include="src\Cactus\Core\Time.cpp">
       <Filter>src\Cactus\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Cactus\Debug\DebugLayer.cpp">
+      <Filter>src\Cactus\Debug</Filter>
     </ClCompile>
     <ClCompile Include="src\Cactus\ImGui\ImGuiBuild.cpp">
       <Filter>src\Cactus\ImGui</Filter>
@@ -1427,6 +1463,9 @@
     <ClCompile Include="src\Cactus\Renderer\Buffer.cpp">
       <Filter>src\Cactus\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Cactus\Renderer\Framebuffer.cpp">
+      <Filter>src\Cactus\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Cactus\Renderer\OrthographicCamera.cpp">
       <Filter>src\Cactus\Renderer</Filter>
     </ClCompile>
@@ -1436,10 +1475,16 @@
     <ClCompile Include="src\Cactus\Renderer\Renderer.cpp">
       <Filter>src\Cactus\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Cactus\Renderer\Renderer2D.cpp">
+      <Filter>src\Cactus\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Cactus\Renderer\RendererAPI.cpp">
       <Filter>src\Cactus\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Cactus\Renderer\Shader.cpp">
+      <Filter>src\Cactus\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Cactus\Renderer\SubTexture2D.cpp">
       <Filter>src\Cactus\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Cactus\Renderer\Texture.cpp">
@@ -1452,6 +1497,9 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLFramebuffer.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
@@ -1478,22 +1526,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Cactus\Core\Application.cpp">
-      <Filter>src\Cactus</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Cactus\Core\Input.cpp">
-      <Filter>src\Cactus</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Cactus\Core\Layer.cpp">
-      <Filter>src\Cactus</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Cactus\Core\LayerStack.cpp">
-      <Filter>src\Cactus</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Cactus\Core\Log.cpp">
-      <Filter>src\Cactus</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Cactus\Renderer\Renderer2D.cpp" />
-    <ClCompile Include="src\Cactus\Debug\DebugLayer.cpp" />
   </ItemGroup>
 </Project>

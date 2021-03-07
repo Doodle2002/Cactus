@@ -144,6 +144,8 @@ namespace Cactus {
 		data.stats.drawCalls++;
 	}
 
+	
+
 	void Renderer2D::FlushAndReset()
 	{
 		//CACTUS_CORE_WARN("New batch");
@@ -156,16 +158,126 @@ namespace Cactus {
 
 
 
+
+	//COLOR
+	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, const glm::vec4& color)
+	{
+		DrawQuad({ position.x,position.y,0.0f }, size, color);
+	}
+
+	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color)
+	{
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
+			* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
+
+		constexpr glm::vec2 textureCoords[] = { { 0.0f, 0.0f }, { 1.0f, 0.0f }, { 1.0f, 1.0f }, { 0.0f, 1.0f } };
+		DrawQuad(transform, data.whiteTexture,textureCoords, color);
+	}
+
+
+
+	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, float rotation, const glm::vec4& color)
+	{
+		DrawQuad({ position.x,position.y,0.0f }, size, rotation, color);
+	}
+	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const glm::vec4& color)
+	{
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
+			* glm::rotate(glm::mat4(1.0f), glm::radians(rotation), { 0.0f, 0.0f, 1.0f })
+			* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
+
+		constexpr glm::vec2 textureCoords[] = { { 0.0f, 0.0f }, { 1.0f, 0.0f }, { 1.0f, 1.0f }, { 0.0f, 1.0f } };
+		DrawQuad(transform, data.whiteTexture, textureCoords, color);
+	}
+
+
+	//TEXTURE
+	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, const Ref<Texture2D>& texture, const glm::vec4& color)
+	{
+		DrawQuad({ position.x,position.y,0.0f }, size, texture, color);
+	}
+
+	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<Texture2D>& texture, const glm::vec4& color)
+	{
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
+			* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
+
+		constexpr glm::vec2 textureCoords[] = { { 0.0f, 0.0f }, { 1.0f, 0.0f }, { 1.0f, 1.0f }, { 0.0f, 1.0f } };
+		DrawQuad(transform, texture, textureCoords, color);
+	}
+
+
+
+	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, float rotation, const Ref<Texture2D>& texture, const glm::vec4& color)
+	{
+		DrawQuad({ position.x,position.y,0.0f }, size, rotation, texture, color);
+	}
+
+	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const Ref<Texture2D>& texture, const glm::vec4& color)
+	{
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
+			* glm::rotate(glm::mat4(1.0f), glm::radians(rotation), { 0.0f, 0.0f, 1.0f })
+			* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
+
+		constexpr glm::vec2 textureCoords[] = { { 0.0f, 0.0f }, { 1.0f, 0.0f }, { 1.0f, 1.0f }, { 0.0f, 1.0f } };
+		DrawQuad(transform, texture, textureCoords, color);
+
+	}
+
+	//SUBTEXTURE
+	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, const Ref<SubTexture2D>& texture, const glm::vec4& color)
+	{
+		DrawQuad({ position.x,position.y,0.0f }, size, texture, color);
+	}
+
+	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<SubTexture2D>& texture, const glm::vec4& color)
+	{
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
+			* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
+
+		DrawQuad(transform, texture->GetTexture() , texture->GetTexCoords(), color);
+	}
+
+
+
+	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, float rotation, const Ref<SubTexture2D>& texture, const glm::vec4& color)
+	{
+		DrawQuad({ position.x,position.y,0.0f }, size, rotation, texture, color);
+	}
+
+	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const Ref<SubTexture2D>& texture, const glm::vec4& color)
+	{
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
+			* glm::rotate(glm::mat4(1.0f), glm::radians(rotation), { 0.0f, 0.0f, 1.0f })
+			* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
+
+		DrawQuad(transform, texture->GetTexture(), texture->GetTexCoords(), color);
+
+	}
+
+	void Renderer2D::DrawQuad(const glm::mat4& transform, const Ref<SubTexture2D> texture, const glm::vec4& tint)
+	{
+		constexpr glm::vec2 textureCoords[] = { { 0.0f, 0.0f }, { 1.0f, 0.0f }, { 1.0f, 1.0f }, { 0.0f, 1.0f } };
+		DrawQuad(transform, texture->GetTexture(), texture->GetTexCoords(), tint);
+	}
+
+	//TRANSFORM
 	void Renderer2D::DrawQuad(const glm::mat4& transform, const glm::vec4& color)
 	{
-		DrawQuad(transform, data.whiteTexture, color);
+		constexpr glm::vec2 textureCoords[] = { { 0.0f, 0.0f }, { 1.0f, 0.0f }, { 1.0f, 1.0f }, { 0.0f, 1.0f } };
+		DrawQuad(transform, data.whiteTexture, textureCoords, color);
 	}
 
 	//Main DrawQuad function
 	void Renderer2D::DrawQuad(const glm::mat4& transform, const Ref<Texture2D> texture, const glm::vec4& tint)
 	{
 		constexpr glm::vec2 textureCoords[] = { { 0.0f, 0.0f }, { 1.0f, 0.0f }, { 1.0f, 1.0f }, { 0.0f, 1.0f } };
+		DrawQuad(transform, texture, textureCoords, tint);
+	}
 
+
+	void Renderer2D::DrawQuad(const glm::mat4& transform, const Ref<Texture2D> texture, const glm::vec2* textureCoords, const glm::vec4& tint)
+	{
 		if (data.quadIndexCount >= data.maxIndices)
 		{
 			FlushAndReset();
@@ -201,174 +313,6 @@ namespace Cactus {
 		data.quadIndexCount += 6;
 		data.stats.quadCount++;
 	}
-	
-	/*void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, const glm::vec4& color)
-	{
-		DrawQuad({ position.x,position.y,0.0f }, size, 0, data.whiteTexture, color);
-	}*/
-
-	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color)
-	{
-		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
-			* glm::rotate(glm::mat4(1.0f), glm::radians(rotation), { 0.0f, 0.0f, 1.0f })
-			* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
-		DrawQuad(position, size, 0, data.whiteTexture, color);
-	}
-	
-
-	//DEFAULT endpoint (texture + tint)
-	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<Texture2D>& texture, const glm::vec4& tint)
-	{
-
-		/*if (data.quadIndexCount >= data.maxIndices)
-		{
-			FlushAndReset();
-		}
-		float textureIndex = 0.0f;
-		for (uint32_t i = 1; i < data.textureSlotIndex; i++) 
-		{
-			if (*data.textureSlots[i].get() == *texture.get())
-			{
-				textureIndex = (float)i;
-				break;
-			}
-		}
-		if (textureIndex == 0.0f)
-		{
-			textureIndex = (float)data.textureSlotIndex;
-			data.textureSlots[data.textureSlotIndex] = texture;
-			data.textureSlotIndex++;
-		}
-
-
-		data.quadVertexBufferPtr->position = position;
-		data.quadVertexBufferPtr->color = tint;
-		data.quadVertexBufferPtr->texCoord = { 0.0f, 0.0f };
-		data.quadVertexBufferPtr->texIndex = textureIndex;
-		data.quadVertexBufferPtr++;
-
-		data.quadVertexBufferPtr->position = { position.x + size.x, position.y, position.z }; //Might need to be zero
-		data.quadVertexBufferPtr->color = tint;
-		data.quadVertexBufferPtr->texCoord = { 1.0f, 0.0f };
-		data.quadVertexBufferPtr->texIndex = textureIndex;
-		data.quadVertexBufferPtr++;
-
-		data.quadVertexBufferPtr->position = { position.x + size.x, position.y + size.y, position.z };
-		data.quadVertexBufferPtr->color = tint;
-		data.quadVertexBufferPtr->texCoord = { 1.0f, 1.0f };
-		data.quadVertexBufferPtr->texIndex = textureIndex;
-		data.quadVertexBufferPtr++;
-
-		data.quadVertexBufferPtr->position = { position.x, position.y + size.y, position.z };
-		data.quadVertexBufferPtr->color = tint;
-		data.quadVertexBufferPtr->texCoord = { 0.0f, 1.0f };
-		data.quadVertexBufferPtr->texIndex = textureIndex;
-		data.quadVertexBufferPtr++;
-
-		data.quadIndexCount += 6;
-		data.stats.quadCount++;*/
-	}
-
-
-	
-		/*glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) *
-			glm::rotate(glm::mat4(1.0f), glm::radians(rotation), glm::vec3(0, 0, 1)) *
-			glm::scale(glm::mat4(1.0f), { size.x,size.y,1.0f });
-
-		texture->Bind();
-		data.textureShader->SetMat4("u_Transform", transform);
-		data.textureShader->SetFloat4("u_Color", tint);
-		data.quadVertexArray->Bind();
-		RenderCommand::DrawIndexed(data.quadVertexArray);*/
-
-
-
-
-	///////////////////////////////////////////////////////////////////////////////////////////
-	//ROTATION/////////////////////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////////////////////////////
-
-
-	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const glm::vec4& color)
-	{
-		DrawQuad(position, size, rotation, data.whiteTexture, color);
-	}
-
-	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const Ref<Texture2D>& texture, const glm::vec4& tint)
-	{
-
-		constexpr glm::vec2 textureCoords[] = { { 0.0f, 0.0f }, { 1.0f, 0.0f }, { 1.0f, 1.0f }, { 0.0f, 1.0f } };
-
-		if (data.quadIndexCount >= data.maxIndices)
-		{
-			FlushAndReset();
-		}
-
-		float textureIndex = 0.0f;
-		for (uint32_t i = 1; i < data.textureSlotIndex; i++)
-		{
-			if (*data.textureSlots[i].get() == *texture.get())
-			{
-				textureIndex = (float)i;
-				break;
-			}
-		}
-		if (textureIndex == 0.0f)
-		{
-			textureIndex = (float)data.textureSlotIndex;
-			data.textureSlots[data.textureSlotIndex] = texture;
-			data.textureSlotIndex++;
-		}
-
-		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
-			* glm::rotate(glm::mat4(1.0f), glm::radians(rotation), { 0.0f, 0.0f, 1.0f })
-			* glm::scale(glm::mat4(1.0f), { size.x,size.y,1.0f });
-
-
-		for (size_t i = 0; i < 4; i++)
-		{
-			data.quadVertexBufferPtr->position = transform * data.QuadVertexPositions[i];
-			data.quadVertexBufferPtr->color = tint;
-			data.quadVertexBufferPtr->texCoord = textureCoords[i];
-			data.quadVertexBufferPtr->texIndex = textureIndex;
-			data.quadVertexBufferPtr++;
-		}
-
-		data.quadIndexCount += 6;
-		data.stats.quadCount++;
-
-		/*
-		data.quadVertexBufferPtr->position = transform * data.QuadVertexPositions[0];
-		data.quadVertexBufferPtr->color = tint;
-		data.quadVertexBufferPtr->texCoord = { 0.0f, 0.0f };
-		data.quadVertexBufferPtr->texIndex = textureIndex;
-		data.quadVertexBufferPtr++;
-
-		data.quadVertexBufferPtr->position = transform * data.QuadVertexPositions[1];
-		data.quadVertexBufferPtr->color = tint;
-		data.quadVertexBufferPtr->texCoord = { 1.0f, 0.0f };
-		data.quadVertexBufferPtr->texIndex = textureIndex;
-		data.quadVertexBufferPtr++;
-
-		data.quadVertexBufferPtr->position = transform * data.QuadVertexPositions[2];
-		data.quadVertexBufferPtr->color = tint;
-		data.quadVertexBufferPtr->texCoord = { 1.0f, 1.0f };
-		data.quadVertexBufferPtr->texIndex = textureIndex;
-		data.quadVertexBufferPtr++;
-
-		data.quadVertexBufferPtr->position = transform * data.QuadVertexPositions[3];
-		data.quadVertexBufferPtr->color = tint;
-		data.quadVertexBufferPtr->texCoord = { 0.0f, 1.0f };
-		data.quadVertexBufferPtr->texIndex = textureIndex;
-		data.quadVertexBufferPtr++;
-		*/
-
-		
-	}
-
-
-
-
 
 
 

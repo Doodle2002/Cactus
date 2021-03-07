@@ -3,6 +3,7 @@
 #include "OrthographicCamera.h"
 
 #include "Texture.h"
+#include "SubTexture2D.h"
 
 namespace Cactus {
 
@@ -17,20 +18,48 @@ namespace Cactus {
 
 		static void Flush();
 
+		/////////////////////////
+		//TEXTURE2D//////////////
+		/////////////////////////
 
+		//COLOR
 		static void DrawQuad(const glm::vec2& position, const glm::vec2& size, const glm::vec4& color);
 		static void DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color);
 		
+		static void DrawQuad(const glm::vec2& position, const glm::vec2& size, float rotation, const glm::vec4& color);
+		static void DrawQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const glm::vec4& color);
+
+		static void DrawQuad(const glm::mat4& transform, const glm::vec4& color);
+
+		//TEXTURE
 		static void DrawQuad(const glm::vec2& position, const glm::vec2& size, const Ref<Texture2D>& texture, const glm::vec4& color);
 		static void DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<Texture2D>& texture, const glm::vec4& color);
 
-		static void DrawQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const glm::vec4& color);
-		static void DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<Texture2D>& texture, const glm::vec4& tint);
-		static void DrawQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const Ref<Texture2D>& texture, const glm::vec4& tint);
+		static void DrawQuad(const glm::vec2& position, const glm::vec2& size, float rotation, const Ref<Texture2D>& texture, const glm::vec4& color);
+		static void DrawQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const Ref<Texture2D>& texture, const glm::vec4& color);
 
-		//Main drawing methods
-		static void DrawQuad(const glm::mat4& transform, const glm::vec4& color);
+		
+		
 		static void DrawQuad(const glm::mat4& transform, const Ref<Texture2D> texture, const glm::vec4& tint);
+
+
+		/////////////////////////
+		//SUBTEXTURE2D///////////
+		/////////////////////////
+		static void DrawQuad(const glm::vec2& position, const glm::vec2& size, const Ref<SubTexture2D>& texture, const glm::vec4& color);
+		static void DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<SubTexture2D>& texture, const glm::vec4& color);
+
+		static void DrawQuad(const glm::vec2& position, const glm::vec2& size, float rotation, const Ref<SubTexture2D>& texture, const glm::vec4& color);
+		static void DrawQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const Ref<SubTexture2D>& texture, const glm::vec4& color);
+
+
+		static void DrawQuad(const glm::mat4& transform, const Ref<SubTexture2D> texture, const glm::vec4& tint);
+
+
+
+
+		//Main drawing method
+		static void DrawQuad(const glm::mat4& transform, const Ref<Texture2D> texture, const glm::vec2* textureCoords, const glm::vec4& tint);
 
 		struct Statistics
 		{
